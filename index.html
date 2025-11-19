@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prop.Tekia - Agentes IA Inmobiliarios</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .animate-fadeIn { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-white min-h-screen">
+
+    <!-- NAV -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <i data-lucide="brain-circuit" class="h-8 w-8 text-blue-600"></i>
+                    <span class="text-2xl font-bold text-slate-900">Prop.Tekia</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#dolor" class="text-slate-600 hover:text-blue-600 font-medium transition">El Problema</a>
+                    <a href="#solucion" class="text-slate-600 hover:text-blue-600 font-medium transition">Solución</a>
+                    <a href="#casos" class="text-slate-600 hover:text-blue-600 font-medium transition">Resultados</a>
+                    <button onclick="openModal()" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">
+                        Agendar Llamada
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMenu()" class="text-slate-600 hover:text-blue-600">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#dolor" onclick="toggleMenu()" class="block px-3 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 rounded-md">El Problema</a>
+                <a href="#solucion" onclick="toggleMenu()" class="block px-3 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 rounded-md">Solución</a>
+                <a href="#casos" onclick="toggleMenu()" class="block px-3 py-3 text-base font-medium text-slate-600 hover:bg-slate-50 rounded-md">Resultados</a>
+                <button onclick="openModal(); toggleMenu()" class="w-full mt-4 bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold text-center">
+                    Agendar Llamada
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-slate-900 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-purple-500 rounded-full blur-3xl opacity-20"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-900/50 border border-blue-500/30 text-blue-300 text-sm font-semibold mb-6 tracking-wide">
+                ESPECIALISTAS EN IA INMOBILIARIA
+            </span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-8 leading-tight">
+                Convierte curiosos en <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">visitas agendadas</span> mientras duermes
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300 mb-10">
+                Tu equipo está ocupado cerrando tratos. Deja que nuestro Agente IA responda, filtre y agende leads 24/7 en menos de 30 segundos.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="openModal()" class="px-8 py-4 bg-blue-600 text-white text-lg font-bold rounded-lg hover:bg-blue-700 transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
+                    <i data-lucide="calendar" class="h-5 w-5"></i> Activar mi Agente IA
+                </button>
+                <a href="#casos" class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/20 text-lg font-semibold rounded-lg hover:bg-white/20 transition flex items-center justify-center gap-2">
+                    Ver Ejemplos <i data-lucide="arrow-right" class="h-5 w-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DOLOR (Pain) -->
+    <section id="dolor" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                    ¿Te suena familiar esta situación?
+                </h2>
+                <p class="text-lg text-slate-600">
+                    Durante años el sector inmobiliario ha sufrido el mismo problema.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="x-circle" class="h-6 w-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Fuga de Dinero</h3>
+                    <p class="text-slate-600">
+                        Inviertes miles en anuncios, entran mensajes, pero se pierden por falta de respuesta rápida. Cada contacto perdido es una comisión perdida.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="clock" class="h-6 w-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Tardas en Responder</h3>
+                    <p class="text-slate-600">
+                        Tu equipo responde cuando puede. Los fines de semana nadie contesta. Cuando finalmente responden, el lead ya habló con otra inmobiliaria.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="users" class="h-6 w-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-slate-900">Gestión Caótica</h3>
+                    <p class="text-slate-600">
+                        Crees que necesitas más leads, pero en realidad necesitas mejor gestión. Llenar el CRM de basura sin filtrar solo quema a tus agentes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DESEO (Desire) -->
+    <section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Background Decoration -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+           <div class="absolute -top-[50%] -left-[20%] w-[80%] h-[200%] bg-blue-900/20 rotate-12 blur-3xl"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+                        Imagina un sistema que responde en <span class="text-blue-400">menos de 30 segundos</span>
+                    </h2>
+                    <p class="text-xl text-slate-300 mb-6 leading-relaxed">
+                        Incluso si te escriben a las 3 AM. Un agente IA que convierte chats en visitas agendadas, filtra curiosos y entrega solo prospectos reales a tu equipo.
+                    </p>
+                    <p class="text-xl text-slate-300 mb-8 font-medium border-l-4 border-blue-500 pl-4">
+                        Tu inmobiliaria sería más rápida, más ordenada y más rentable… sin contratar personal extra ni trabajar más horas.
+                    </p>
+                    <button onclick="openModal()" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-500 transition shadow-lg shadow-blue-900/50 flex items-center gap-2">
+                        Lo quiero para mi agencia <i data-lucide="arrow-right" class="h-5 w-5"></i>
+                    </button>
+                </div>
+                
+                <!-- Chat Simulation -->
+                <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700 shadow-2xl transform rotate-1 hover:rotate-0 transition duration-500">
+                   <div class="space-y-4">
+                      <div class="flex items-center gap-2 border-b border-slate-700 pb-4 mb-4">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span class="text-sm text-slate-400 ml-2">WhatsApp - Lead Entrante (Domingo 22:00h)</span>
+                      </div>
+                      
+                      <div class="flex justify-end">
+                        <div class="bg-green-600 text-white p-3 rounded-l-xl rounded-tr-xl max-w-[80%] text-sm">
+                          Hola, vi el dpto en Palermo. ¿Sigue disponible?
+                        </div>
+                      </div>
+                      
+                      <div class="flex justify-start">
+                        <div class="bg-slate-700 text-white p-3 rounded-r-xl rounded-tl-xl max-w-[80%] text-sm">
+                          ¡Hola! 👋 Soy el asistente virtual de Prop.Tekia. Sí, el departamento en Palermo sigue disponible y es una excelente oportunidad. ¿Buscas para vivienda o inversión?
+                        </div>
+                      </div>
+
+                      <div class="flex justify-end">
+                        <div class="bg-green-600 text-white p-3 rounded-l-xl rounded-tr-xl max-w-[80%] text-sm">
+                          Vivienda propia.
+                        </div>
+                      </div>
+
+                      <div class="flex justify-start">
+                        <div class="bg-slate-700 text-white p-3 rounded-r-xl rounded-tl-xl max-w-[80%] text-sm">
+                          Perfecto. El precio es de $180k USD. ¿Se ajusta a tu presupuesto para coordinar una visita esta semana? 📅
+                        </div>
+                      </div>
+                       <div class="flex justify-center mt-2">
+                        <span class="text-xs text-slate-500 font-mono animate-pulse">Agendando visita en Google Calendar...</span>
+                      </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PUV (Features) -->
+    <section id="solucion" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-blue-600 font-bold tracking-wide uppercase mb-2">Nuestra Propuesta Única</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">
+                    Agentes IA especializados en Inmobiliaria
+                </h3>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
+                    Todo lo que necesitas para automatizar tu flujo de ventas sin cambiar tu operación actual.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Cards -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="message-circle" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Omnicanalidad Real</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Responde automáticamente en WhatsApp, Instagram y los formularios de tu landing page al instante.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="shield-check" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Filtro Inteligente</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Distingue entre curiosos y leads reales en segundos. Solo pasa los leads calificados a tus agentes.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Envío de Fichas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Envía fotos, precios y datos técnicos de las propiedades automáticamente dentro del chat.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="calendar" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Agenda Automática</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Coordina visitas directamente en tu Google Calendar o CRM, evitando el 'ping-pong' de mensajes.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="clock" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Seguimiento Persistente</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Realiza seguimiento automatizado durante 7 a 14 días hasta obtener una respuesta o descartar.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="trending-up" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Escalabilidad Pura</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Atiende 10 o 1,000 leads simultáneamente sin contratar más personal ni perder calidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CASOS DE USO -->
+    <section id="casos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-12">
+                Casos de Uso Reales
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Case 1 -->
+                <div class="relative p-8 bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                    <span class="absolute top-0 right-0 text-9xl font-black text-slate-200/50 -mr-4 -mt-4 select-none">01</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-blue-600 mb-4 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="h-5 w-5"></i> Lead de Facebook Ads
+                        </h3>
+                        <p class="text-slate-700 leading-relaxed">
+                            El agente IA responde en segundos, comparte ficha técnica, pide datos clave, valida presupuesto y agenda la visita automáticamente en Google Calendar sin intervención humana.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="relative p-8 bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                    <span class="absolute top-0 right-0 text-9xl font-black text-slate-200/50 -mr-4 -mt-4 select-none">02</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-blue-600 mb-4 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="h-5 w-5"></i> Lead Caliente que no responde
+                        </h3>
+                        <p class="text-slate-700 leading-relaxed">
+                            Si un interesado deja de contestar, el sistema activa un seguimiento automatizado (follow-up) estratégico durante 7 días hasta recuperar al prospecto y convertirlo en cita.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="relative p-8 bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                    <span class="absolute top-0 right-0 text-9xl font-black text-slate-200/50 -mr-4 -mt-4 select-none">03</span>
+                    <div class="relative z-10">
+                        <h3 class="text-xl font-bold text-blue-600 mb-4 flex items-center gap-2">
+                            <i data-lucide="check-circle-2" class="h-5 w-5"></i> Alto volumen de consultas
+                        </h3>
+                        <p class="text-slate-700 leading-relaxed">
+                            En lanzamientos o campañas agresivas, tu equipo deja de responder chats repetitivos y se dedica solo a cerrar negocios. El agente IA hace todo el filtrado inicial masivo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTORIDAD -->
+    <section class="py-20 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Quiénes Somos</h2>
+            <p class="text-lg text-slate-300 mb-10 leading-relaxed">
+                Prop.Tekia está creada por profesionales con amplia experiencia en publicidad, funnels y automatizaciones. 
+                Entendemos cómo piensa un lead inmobiliario, cómo convertirlo y qué hace que una propiedad se venda o se alquile.
+            </p>
+            
+            <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 inline-block text-left w-full md:w-auto">
+                <h3 class="text-xl font-semibold mb-4 text-blue-400 flex items-center gap-2">
+                    <i data-lucide="brain-circuit" class="h-6 w-6"></i> Diferencial Clave
+                </h3>
+                <p class="text-slate-300">
+                    Nuestros agentes IA no son chatbots simples con botones; son asistentes entrenados con <strong class="text-white">lenguaje inmobiliario real</strong>, manejo de objeciones y procesos de venta de alto rendimiento.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GARANTIAS / FAQ -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-slate-900 mb-12">Preguntas Frecuentes & Garantías</h2>
+            
+            <div class="space-y-4" id="accordion-container">
+                <!-- Item 1 -->
+                <div class="border border-slate-200 rounded-lg bg-white overflow-hidden accordion-item">
+                    <button class="accordion-header w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-slate-50 transition">
+                        <span class="font-semibold text-slate-800">¿Y si la IA responde mal?</span>
+                        <i data-lucide="chevron-down" class="accordion-arrow text-blue-600 h-5 w-5 transition-transform duration-200"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-4 text-slate-600 bg-slate-50 border-t border-slate-100">
+                        <div class="pt-4">No improvisamos. Entrenamos el agente con tus propios textos, tu base de conocimiento y tu estilo de comunicación. Además, siempre puedes intervenir en el chat si lo deseas.</div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="border border-slate-200 rounded-lg bg-white overflow-hidden accordion-item">
+                    <button class="accordion-header w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-slate-50 transition">
+                        <span class="font-semibold text-slate-800">¿Y si mi equipo no se adapta?</span>
+                        <i data-lucide="chevron-down" class="accordion-arrow text-blue-600 h-5 w-5 transition-transform duration-200"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-4 text-slate-600 bg-slate-50 border-t border-slate-100">
+                        <div class="pt-4">La mejor parte es que no necesitan adaptarse a software complejo. Para ellos no cambia nada operativo: simplemente reciben notificaciones de visitas ya agendadas y listas en su calendario.</div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="border border-slate-200 rounded-lg bg-white overflow-hidden accordion-item">
+                    <button class="accordion-header w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-slate-50 transition">
+                        <span class="font-semibold text-slate-800">¿Qué pasa si no funciona?</span>
+                        <i data-lucide="chevron-down" class="accordion-arrow text-blue-600 h-5 w-5 transition-transform duration-200"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-4 text-slate-600 bg-slate-50 border-t border-slate-100">
+                        <div class="pt-4">Ofrecemos una implementación con seguimiento semanal. Monitorizamos las conversaciones y optimizamos las respuestas hasta dejarlo 100% operativo y convirtiendo.</div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="border border-slate-200 rounded-lg bg-white overflow-hidden accordion-item">
+                    <button class="accordion-header w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none hover:bg-slate-50 transition">
+                        <span class="font-semibold text-slate-800">¿Se conecta con mi CRM?</span>
+                        <i data-lucide="chevron-down" class="accordion-arrow text-blue-600 h-5 w-5 transition-transform duration-200"></i>
+                    </button>
+                    <div class="accordion-content hidden px-6 pb-4 text-slate-600 bg-slate-50 border-t border-slate-100">
+                        <div class="pt-4">Sí, nos integramos con la mayoría de herramientas populares (Google Sheets, Hubspot, Salesforce, Calendars, etc.) para que la data fluya automáticamente.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="py-24 bg-blue-600 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-6">Deja de perder ventas hoy mismo</h2>
+            <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                Agenda tu llamada de consultoría gratuita y descubre cómo activar tu agente IA inmobiliario en menos de 48 horas.
+            </p>
+            <button onclick="openModal()" class="bg-white text-blue-600 text-xl font-bold py-5 px-10 rounded-full shadow-2xl hover:bg-slate-100 transition transform hover:scale-105">
+                Agendar mi Llamada Ahora
+            </button>
+            <p class="mt-6 text-sm text-blue-200">
+                Cupos limitados para implementaciones este mes.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-500 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <i data-lucide="brain-circuit" class="h-6 w-6 text-blue-600"></i>
+                <span class="text-xl font-bold text-slate-200">Prop.Tekia</span>
+            </div>
+            <p class="mb-4">Automatización inteligente para el sector Real Estate.</p>
+            <p class="text-sm">© <span id="year"></span> Prop.Tekia. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL FORM -->
+    <div id="consultation-modal" class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fadeIn relative">
+            <div class="bg-blue-600 p-6 text-white flex justify-between items-center">
+                <h3 class="text-xl font-bold">Agenda tu Consultoría</h3>
+                <button onclick="closeModal()" class="text-white/80 hover:text-white">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+            <div class="p-8">
+                <p class="text-slate-600 mb-6 text-sm">
+                    Completa tus datos. Analizaremos tu inmobiliaria y te mostraremos una demo en vivo de la IA.
+                </p>
+                <form class="space-y-4" onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.'); closeModal();">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Nombre</label>
+                        <input type="text" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Tu nombre" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Inmobiliaria</label>
+                        <input type="text" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Nombre de tu agencia" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">WhatsApp</label>
+                        <input type="tel" class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="+54 9 11..." required>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition mt-2">
+                        Solicitar Demo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Logic
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal Logic
+        function openModal() {
+            const modal = document.getElementById('consultation-modal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('consultation-modal');
+            modal.classList.add('hidden');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('consultation-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Accordion Logic
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+            const arrow = item.querySelector('.accordion-arrow');
+
+            header.addEventListener('click', () => {
+                // Toggle current
+                content.classList.toggle('hidden');
+                arrow.classList.toggle('rotate-180');
+                
+                // Optional: Close others (if you want "accordion" behavior, not just "collapsible")
+                // accordionItems.forEach(otherItem => {
+                //     if (otherItem !== item) {
+                //         otherItem.querySelector('.accordion-content').classList.add('hidden');
+                //         otherItem.querySelector('.accordion-arrow').classList.remove('rotate-180');
+                //     }
+                // });
+            });
+        });
+    </script>
+</body>
+</html>
